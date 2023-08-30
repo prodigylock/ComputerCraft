@@ -17,8 +17,15 @@ local function get(repoFile)
       end --end the if
     end --close the function
 
+--Finding peripherals
+print("Finding peripherals")
+local peripheralNames = peripheral.getNames()
+for i = 1,#peripheralNames do
+    print(peripheralNames[i])
+end
+
 
 --Starting redstoneTest
-print("Starting redstoneTest")
-get("redstoneTest.lua")
-shell.run("redstoneTest.lua")
+-- print("Starting redstoneTest")
+-- get("redstoneTest.lua")
+-- shell.run("redstoneTest.lua")
