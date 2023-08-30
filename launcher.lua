@@ -25,7 +25,7 @@ for i = 1,#peripheralNames do
 end
 
 
---Starting redstoneTest
--- print("Starting redstoneTest")
--- get("redstoneTest.lua")
--- shell.run("redstoneTest.lua")
+--booting fire control
+print("booting fire control")
+get("fireControl.lua")
+-- shell.run("fireControl.lua")
