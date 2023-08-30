@@ -1,2 +1,4 @@
-print("Hello world")
+print("Starting launcher")
+
+print(peripheral.getNames())
 
