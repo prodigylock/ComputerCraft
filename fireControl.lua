@@ -13,9 +13,9 @@ local function loadAction()
     os.sleep(4*tick)
 
     -- load pulse
-    rs1.setOutput("up",true)
+    rs1.setOutput("top",true)
     os.sleep(tick)
-    rs1.setOutput("up",false)
+    rs1.setOutput("top",false)
 end
 
 local function loadShot()
@@ -30,6 +30,10 @@ local function loadShot()
     rs1.setOutput("right",true)
     os.sleep(tick)
     rs1.setOutput("right",false)
+
+    rs3.setOutput("back",true)
+    os.sleep(tick)
+    rs3.setOutput("back",false)
 end
 
 for i = 1, 10, 1 do
