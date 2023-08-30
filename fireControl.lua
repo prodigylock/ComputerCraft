@@ -34,5 +34,6 @@ end
 
 for i = 1, 10, 1 do
     print(i)
+    os.sleep(1)
 end
 loadShot()
