@@ -10,8 +10,6 @@ local pitchControl = peripheral.wrap("scrollBehaviourEntity_3")
 yawControl.setTargetSpeed(0)
 pitchControl.setTargetSpeed(0)
 
-yawControl.setOutput()
-
 local tick = 1/20
 
 local function loadAction()
@@ -57,6 +55,11 @@ local function takeAim()
     --lift weapon
     rs4.setOutput("left",true)
     os.sleep(2)
+
+    --screw
+    rs2.setOutput("front",true)
+    os.sleep(1)
+
     --assemble
     rs3.setOutput("top",true)
     --take aim
@@ -69,6 +72,11 @@ local function takeAim()
     --disassemble
     rs3.setOutput("top",false)
     os.sleep(tick)
+
+    --unscrew
+    rs2.setOutput("front",false)
+    os.sleep(1)
+
     --lower
     rs4.setOutput("left",false)
     os.sleep(2)
