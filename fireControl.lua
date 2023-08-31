@@ -10,8 +10,8 @@ local rs3 = peripheral.wrap("redstoneIntegrator_17")
 local rs4 = peripheral.wrap("redstoneIntegrator_18")
 local rs5 = peripheral.wrap("redstoneIntegrator_16")
  
-local yawControl = peripheral.wrap("scrollBehaviourEntity_2")
-local pitchControl = peripheral.wrap("scrollBehaviourEntity_3")
+local yawControl = peripheral.wrap("scrollBehaviourEntity_4")
+local pitchControl = peripheral.wrap("scrollBehaviourEntity_5")
  
 yawControl.setTargetSpeed(0)
 pitchControl.setTargetSpeed(0)
