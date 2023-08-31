@@ -6,8 +6,8 @@ local aimingRPM = 13
  
 local rs1 = peripheral.wrap("redstoneIntegrator_15")
 local rs2 = peripheral.wrap("redstoneIntegrator_13")
-local rs3 = peripheral.wrap("redstoneIntegrator_9")
-local rs4 = peripheral.wrap("redstoneIntegrator_10")
+local rs3 = peripheral.wrap("redstoneIntegrator_17")
+local rs4 = peripheral.wrap("redstoneIntegrator_18")
 local rs5 = peripheral.wrap("redstoneIntegrator_16")
  
 local yawControl = peripheral.wrap("scrollBehaviourEntity_2")
@@ -170,7 +170,7 @@ end
 local function fire()
         --fire
         rs3.setOutput("left",true)
-        os.sleep(tick)
+        os.sleep(0.5)
         rs3.setOutput("left",false)
         os.sleep(1)
 end
