@@ -124,7 +124,10 @@ end
  
 local function unfold()
     --open bay doors
- 
+    rs4.setOutput("top",true)
+    os.sleep(tick)
+    rs4.setOutput("top",false)
+    
     --unfold screw
     rs5.setOutput("top",true)
     os.sleep(tick)
@@ -152,7 +155,9 @@ local function fold()
     os.sleep(0.5)
  
     -- close bay doors
- 
+    rs4.setOutput("top",true)
+    os.sleep(tick)
+    rs4.setOutput("top",false)
 end
  
  
