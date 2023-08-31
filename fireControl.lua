@@ -5,7 +5,7 @@ local pitch = 45
 local aimingRPM = 13
  
 local rs1 = peripheral.wrap("redstoneIntegrator_15")
-local rs2 = peripheral.wrap("redstoneIntegrator_13")
+local rs2 = peripheral.wrap("redstoneIntegrator_19")
 local rs3 = peripheral.wrap("redstoneIntegrator_17")
 local rs4 = peripheral.wrap("redstoneIntegrator_18")
 local rs5 = peripheral.wrap("redstoneIntegrator_16")
