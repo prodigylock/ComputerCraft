@@ -62,6 +62,7 @@ local function takeAim()
 
     --assemble
     rs3.setOutput("top",true)
+    os.sleep(tick)
     --take aim
     os.sleep(3)
     --fire
