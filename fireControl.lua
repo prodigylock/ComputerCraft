@@ -1,5 +1,10 @@
 print("Obtaining peripherals")
-local rs1 = peripheral.wrap("redstoneIntegrator_7")
+local yaw = 45
+local pitch = 45
+
+local aimingRPM = 13
+
+local rs1w = peripheral.wrap("redstoneIntegrator_7")
 local rs2 = peripheral.wrap("redstoneIntegrator_8")
 local rs3 = peripheral.wrap("redstoneIntegrator_9")
 local rs4 = peripheral.wrap("redstoneIntegrator_10")
@@ -21,9 +26,9 @@ local function loadAction()
     os.sleep(4*tick)
 
     -- load pulse
-    rs1.setOutput("top",true)
+    rs1.setOutput("right",true)
     os.sleep(tick)
-    rs1.setOutput("top",false)
+    rs1.setOutput("right",false)
 end
 
 local function loadShot()
@@ -35,7 +40,7 @@ local function loadShot()
         os.sleep(1)
     end
     loadAction()
-
+    os.sleep(0.5)
     --reset carriage signal
     rs1.setOutput("front",true)
     os.sleep(tick)
@@ -52,7 +57,7 @@ local function loadShot()
 
 end
 
-local function takeAim()
+local function armCannon()
 
     --screw
     --new screw sequence
@@ -84,11 +89,11 @@ local function takeAim()
     os.sleep(tick)
     --take aim
     os.sleep(3)
-    --fire
-    rs3.setOutput("left",true)
-    os.sleep(tick)
-    rs3.setOutput("left",false)
-    os.sleep(tick)
+
+    
+end
+
+local function unarmCannon()
     --disassemble
     rs3.setOutput("top",false)
     os.sleep(tick)
@@ -150,12 +155,42 @@ local function fold()
 
 end
 
+
+
 for i = 1, 3, 1 do
     print(i)
     os.sleep(1)
 end
 
+local function fire()
+        --fire
+        rs3.setOutput("left",true)
+        os.sleep(tick)
+        rs3.setOutput("left",false)
+        os.sleep(tick)
+end
+
+local function aim(yaw,pith)
+    local anglePerTick = aimingRPM/27
+
+    --calculating yawing time
+    local yawTicks = yaw/anglePerTick
+    yawControl.setTargetSpeed(-rpm)
+    os.sleep(yawTicks*tick)
+
+    --calculating pitching time
+    local pitchTicks = pitch/anglePerTick
+    pitchControl.setTargetSpeed(-rpm)
+    os.sleep(pitchTicks*tick)
+
+end
+
+
+
 unfold()
 loadShot()
-takeAim()
+armCannon()
+aim(yaw,pitch)
+fire()
+unarmCannon()
 fold()
