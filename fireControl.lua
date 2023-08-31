@@ -88,7 +88,6 @@ local function armCannon()
     --assemble
     rs3.setOutput("top",true)
     os.sleep(tick)
-    --take aim
  
     
 end
@@ -180,12 +179,31 @@ local function aim(yaw,pith)
  
     --calculating yawing time
     local yawTicks = yaw/anglePerTick
+
+    --calculating pitching time
+    local pitchTicks = pitch/anglePerTick
+
+    if yawTicks>pitchTicks then
+        yawControl.setTargetSpeed(aimingRPM)
+        pitchControl.setTargetSpeed(aimingRPM)
+        os.sleep(pitchTicks)
+        pitchControl.setTargetSpeed(0)
+        os.sleep(yawTicks-pitchTicks)
+        yawControl.setTargetSpeed(0)
+    else 
+        yawControl.setTargetSpeed(aimingRPM)
+        pitchControl.setTargetSpeed(aimingRPM)
+        os.sleep(yawTicks)
+        pitchControl.setTargetSpeed(0)
+        os.sleep(pitchTicks-yawTicks)
+        yawControl.setTargetSpeed(0)
+    end 
+
     yawControl.setTargetSpeed(aimingRPM)
     os.sleep(yawTicks*tick)
     yawControl.setTargetSpeed(0)
  
-    --calculating pitching time
-    local pitchTicks = pitch/anglePerTick
+
     pitchControl.setTargetSpeed(aimingRPM)
     os.sleep(pitchTicks*tick)
     pitchControl.setTargetSpeed(0)
