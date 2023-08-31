@@ -4,11 +4,11 @@ local pitch = 45
  
 local aimingRPM = 13
  
-local rs1 = peripheral.wrap("redstoneIntegrator_14")
+local rs1 = peripheral.wrap("redstoneIntegrator_15")
 local rs2 = peripheral.wrap("redstoneIntegrator_13")
 local rs3 = peripheral.wrap("redstoneIntegrator_9")
 local rs4 = peripheral.wrap("redstoneIntegrator_10")
-local rs5 = peripheral.wrap("redstoneIntegrator_12")
+local rs5 = peripheral.wrap("redstoneIntegrator_16")
  
 local yawControl = peripheral.wrap("scrollBehaviourEntity_2")
 local pitchControl = peripheral.wrap("scrollBehaviourEntity_3")
@@ -127,7 +127,7 @@ local function unfold()
     rs4.setOutput("top",true)
     os.sleep(tick)
     rs4.setOutput("top",false)
-    
+
     --unfold screw
     rs5.setOutput("top",true)
     os.sleep(tick)
