@@ -89,7 +89,6 @@ local function armCannon()
     rs3.setOutput("top",true)
     os.sleep(tick)
     --take aim
-    os.sleep(3)
  
     
 end
@@ -188,12 +187,14 @@ local function aim(yaw,pith)
  
 end
  
- 
+local numberOfShots = 5;
  
 unfold()
-loadShot()
-armCannon()
-aim(yaw,pitch)
-fire()
-unarmCannon()
+for i = 1, numberOfShots, 1 do
+    loadShot()
+    armCannon()
+    aim(yaw,pitch)
+    fire()
+    unarmCannon()
+end
 fold()
