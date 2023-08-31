@@ -168,7 +168,7 @@ local function fire()
         rs3.setOutput("left",true)
         os.sleep(tick)
         rs3.setOutput("left",false)
-        os.sleep(tick)
+        os.sleep(1)
 end
  
 local function aim(yaw,pith)
