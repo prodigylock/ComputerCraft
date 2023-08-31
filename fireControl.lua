@@ -150,7 +150,7 @@ local function fold()
 
 end
 
-for i = 1, 10, 1 do
+for i = 1, 3, 1 do
     print(i)
     os.sleep(1)
 end
