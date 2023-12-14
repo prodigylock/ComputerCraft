@@ -49,13 +49,23 @@ function Display()
     --creates a window for every floor
     --creates a window for next/previous page buttons and page counter
 
+    -- add logic for 6 or more floors to seperate into two columns
+    -- invert layers or make them come from the bottom
+    --gray out/make invisible up/down if unavailable
+    -- test states saving after moving
     term.redirect(floorWindow)
     local size = 3
     local offset = 0
     for index, value in ipairs(Floors) do
-         
+        --draws box 
         paintutils.drawFilledBox(1,1+offset,13,3+offset,colors.lightBlue)
         offset = offset + size + 1
+        --add number in centre
+        local centreOffset = (13 - #value)/2
+        term.setCursorPos(centreOffset,2+offset)
+        term.write(value)
+
+
     end
 
 end
