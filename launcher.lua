@@ -1,4 +1,4 @@
-print("Starting launcher")
+print("Launching...")
 local project = ""
 local url = "https://raw.githubusercontent.com/prodigylock/ComputerCraft/master/"..project
 

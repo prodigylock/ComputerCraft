@@ -1,33 +1,36 @@
-local githubUrl = "https://raw.githubusercontent.com/prodigylock/ComputerCraft/master/launcher.lua"
+-- Set project name here
+local project = ""
+local githubUrl = "https://raw.githubusercontent.com/prodigylock/ComputerCraft/master/".. project.."/launcher.lua"
 
-local function downloadAndRunScript(url)
-    local response = http.get(url)
+function main()
+    if file_exists("launcher.lua") then
+        shell.run("launcher.lua")
+    else
+        downloadAndRunScript(githubUrl)
+    end
     
+end
+
+function file_exists(name)
+    local f=io.open(name,"r")
+    if f~=nil then io.close(f) return true else return false end
+ end
+
+function downloadAndRunScript(url)
+    local response = http.get(url)
     if response then
         local responseData = response.readAll() -- Read the response data
         response.close() -- Close the connection
-        
         if responseData then
-            local tempFilePath = "temp_script.lua"
-            local tempFile = io.open(tempFilePath, "w")
-            
-            if tempFile then
-                tempFile:write(responseData)
-                tempFile:close()
-
+            local launcherPath = "launcher.lua"
+            local launcher = io.open(launcherPath, "w")
+            if launcher then
+                launcher:write(responseData)
+                launcher:close()
                 -- Run the downloaded Lua script
-                local success, error = pcall(dofile, tempFilePath)
-
-                -- Clean up: Delete the temporary file if it exists
-                if fs.exists(tempFilePath) then
-                    fs.delete(tempFilePath)
-                end
-
-                if not success then
-                    print("Error:", error)
-                end
+                local success, error = pcall(dofile, launcherPath)
             else
-                print("Error: Failed to create temporary file")
+                print("Error: Failed to create launch file")
             end
         else
             print("Error: Empty response")
@@ -37,4 +40,5 @@ local function downloadAndRunScript(url)
     end
 end
 
-downloadAndRunScript(githubUrl)
+main()
+
