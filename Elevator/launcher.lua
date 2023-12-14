@@ -1,5 +1,5 @@
-print("Starting launcher")
-local project = "Elevator"
+print("Launching...")
+local project = ""
 local url = "https://raw.githubusercontent.com/prodigylock/ComputerCraft/master/"..project
 
 local function get(repoFile)
@@ -27,6 +27,8 @@ end
 
 --Downloading files
 print("Downloading files")
---get()
+get("elevator.lua")
 
--- shell.run("fireControl.lua")
+print("Starting")
+print("=============================")
+shell.run("elevator.lua")
