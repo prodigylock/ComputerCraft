@@ -20,21 +20,37 @@ function Display()
     Monitor.setTextScale(0.5)
     --Creates two windows (top and bottom) for fixed screen
     --table parentTerm, number x, number y, number width, number height [, boolean visible]   
-    floorWindow = window.create(Monitor,2,2,14,15,true)
-    pageWindow = window.create(Monitor,top+2,2,14,3,true)
-
-    
-    term.redirect(pageWindow)
-    paintutils.drawFilledBox(1,1,14,5,colors.blue)
+    floorWindow = window.create(Monitor,2,5,13,16,true)
+    downWindow = window.create(Monitor,2,22,13,2,true)
+    upWindow = window.create(Monitor,2,2,13,2,true)
 
     floorWindow.setBackgroundColour(colors.red)
-    pageWindow.setBackgroundColour(colors.blue)
-    
-    floorWindow.clear()
-    pageWindow.clear()
-    --creates a window for every floor
+    upWindow.setBackgroundColour(colors.lime)
+    downWindow.setBackgroundColour(colors.lime)
 
+    floorWindow.clear()
+    upWindow.clear()
+    downWindow.clear()
+
+    term.redirect(upWindow)
+    term.setCursorPos(6,1)
+    term.write("/ \\")
+    term.setCursorPos(5,2)
+    term.write("// \\\\")
+
+    term.redirect(downWindow)
+    term.setCursorPos(5,1)
+    term.write("\\\\ //")
+    term.setCursorPos(6,2)
+    term.write("\\ /")
+
+    --creates a window for every floor
     --creates a window for next/previous page buttons and page counter
+
+end
+
+-- touch event handler
+function handleTouchEvent()
 
 end
 
