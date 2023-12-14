@@ -4,7 +4,7 @@ Monitor = peripheral.wrap("top")
 
 function Main()
         
-    term.redirect(monitor)
+    term.redirect(Monitor)
     term.setBackgroundColour(colors.black)
     term.clear()
 
@@ -17,15 +17,20 @@ end
 function Display()
     local top = 15
     local bottom = 20-15
-    monitor.setTextScale(0.5)
+    Monitor.setTextScale(0.5)
     --Creates two windows (top and bottom) for fixed screen
     --table parentTerm, number x, number y, number width, number height [, boolean visible]   
-    floorWindow = window.create(term,1,1,14,15)
-    pageWindow = window.create(term,top+1,1,14,5)
+    floorWindow = window.create(Monitor,1,1,14,15,true)
+    pageWindow = window.create(Monitor,top+1,1,14,5,true)
+
+    floorWindow.clear()
+    pageWindow.clear()
+    
+    term.redirect(pageWindow)
+    paintutils.drawFilledBox(1,1,14,5,colors.blue)
 
     floorWindow.setBackgroundColour(colors.red)
-    pagesWindow.setBackgroundColour(colors.blue)
-
+    pageWindow.setBackgroundColour(colors.blue)
     --creates a window for every floor
 
     --creates a window for next/previous page buttons and page counter
