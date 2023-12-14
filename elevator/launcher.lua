@@ -3,6 +3,7 @@ local project = "elevator"
 local url = "https://raw.githubusercontent.com/prodigylock/ComputerCraft/master/"..project.."/"
 
 local function get(repoFile)
+    print("Getting: "..url .. repoFile)
     local download = http.get(url .. repoFile) --This will make 'download' hold the contents of the file.
     if download then --checks if download returned true or false
        local handle = download.readAll() --Reads everything in download
