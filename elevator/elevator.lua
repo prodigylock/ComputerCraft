@@ -10,6 +10,8 @@ function Main()
 
     Display()
 
+    --while loop event handlers
+
 end
 
 
@@ -47,10 +49,19 @@ function Display()
     --creates a window for every floor
     --creates a window for next/previous page buttons and page counter
 
+    term.redirect(floorWindow)
+    local size = 3
+    local offset = 0
+    for index, value in ipairs(Floors) do
+         
+        paintutils.drawFilledBox(1,1+offset,13,3+offset,colors.lightBlue)
+        offset = offset + size + 1
+    end
+
 end
 
 -- touch event handler
-function handleTouchEvent()
+function HandleTouchEvent(event)
 
 end
 
