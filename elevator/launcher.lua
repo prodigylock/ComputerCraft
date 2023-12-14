@@ -1,5 +1,5 @@
 print("Launching...")
-local project = ""
+local project = "elevator"
 local url = "https://raw.githubusercontent.com/prodigylock/ComputerCraft/master/"..project
 
 local function get(repoFile)
