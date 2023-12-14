@@ -1,6 +1,6 @@
 print("Launching...")
 local project = "elevator"
-local url = "https://raw.githubusercontent.com/prodigylock/ComputerCraft/master/"..project
+local url = "https://raw.githubusercontent.com/prodigylock/ComputerCraft/master/"..project.."/"
 
 local function get(repoFile)
     local download = http.get(url .. repoFile) --This will make 'download' hold the contents of the file.
