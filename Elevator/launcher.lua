@@ -1,6 +1,6 @@
 print("Starting launcher")
-
-local url = "https://raw.githubusercontent.com/prodigylock/ComputerCraft/master/"
+local project = "Elevator"
+local url = "https://raw.githubusercontent.com/prodigylock/ComputerCraft/master/"..project
 
 local function get(repoFile)
     local download = http.get(url .. repoFile) --This will make 'download' hold the contents of the file.
@@ -25,7 +25,8 @@ for i = 1,#peripheralNames do
 end
 
 
---booting fire control
-print("booting fire control")
-get("elevator.lua")
-shell.run("elevator.lua")
+--Downloading files
+print("Downloading files")
+--get()
+
+-- shell.run("fireControl.lua")

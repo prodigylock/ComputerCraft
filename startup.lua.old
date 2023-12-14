@@ -1,0 +1,25 @@
+-- URL of the Lua file in the GitHub repo
+local githubUrl = "https://raw.githubusercontent.com/prodigylock/ComputerCraft/master/launcher.lua"
+
+-- Function to download and run a Lua script from a URL
+local function downloadAndRunScript(url)
+    local response, error = http.get(url)
+    if response then
+        -- Save the downloaded code to a temporary file
+        local tempFilePath = "temp_script.lua"
+        local tempFile = io.open(tempFilePath, "w")
+        tempFile:write(response.body)
+        tempFile:close()
+
+        -- Run the downloaded Lua script
+        dofile(tempFilePath)
+
+        -- Clean up: Delete the temporary file
+        os.remove(tempFilePath)
+    else
+        print("Error:", error)
+    end
+end
+
+-- Download and run the Lua script from GitHub
+downloadAndRunScript(githubUrl)
