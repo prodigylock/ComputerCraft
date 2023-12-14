@@ -1,5 +1,5 @@
 -- Sets the possible floors and peripherals
-Floors = {"2","1","S"}
+Floors = {"2","1","S","S-1"}
 Monitor = peripheral.wrap("top")
 
 function Main()
@@ -22,11 +22,11 @@ function Display()
     Monitor.setTextScale(0.5)
     --Creates two windows (top and bottom) for fixed screen
     --table parentTerm, number x, number y, number width, number height [, boolean visible]   
-    floorWindow = window.create(Monitor,2,5,13,16,true)
+    floorWindow = window.create(Monitor,2,6,13,16,true)
     downWindow = window.create(Monitor,2,22,13,2,true)
-    upWindow = window.create(Monitor,2,2,13,2,true)
+    upWindow = window.create(Monitor,2,3,13,2,true)
 
-    floorWindow.setBackgroundColour(colors.red)
+    floorWindow.setBackgroundColour(colors.black)
     upWindow.setBackgroundColour(colors.lime)
     downWindow.setBackgroundColour(colors.lime)
 
@@ -59,11 +59,11 @@ function Display()
     for index, value in ipairs(Floors) do
         --draws box 
         paintutils.drawFilledBox(1,1+offset,13,3+offset,colors.lightBlue)
-        offset = offset + size + 1
         --add number in centre
         local centreOffset = (13 - #value)/2
         term.setCursorPos(centreOffset,2+offset)
         term.write(value)
+        offset = offset + size + 1
 
 
     end
