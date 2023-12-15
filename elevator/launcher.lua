@@ -29,6 +29,7 @@ end
 --Downloading files
 print("Downloading files")
 get("elevator.lua")
+get("button.lua")
 
 print("Starting")
 print("=============================")
