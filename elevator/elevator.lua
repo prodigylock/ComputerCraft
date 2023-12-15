@@ -2,7 +2,7 @@
 
 
 function Main()
-    local version = 2.8
+    local version = 2.9
     print("version: "..version)
     Floors = {"S-1","S","1","2"}
     GroundFloor = 3
@@ -27,9 +27,12 @@ function Main()
                     break -- we found on, so we don't need to keep looking
                 end
             end
-            -- if quit.clicked(event[3],event[4]) == true then
-            --     os.queueEvent("key",keys.q)
-            -- end
+            if upHandler(event[3],event[4]) then
+                FloorOffset = FloorOffset+1
+            elseif downHandler(event[3],event[4]) then
+                FloorOffset = FloorOffset-1
+            end
+
         elseif event[1] =="key" and event[2]==keys.q then
             break
         end
@@ -227,7 +230,7 @@ function Display()
     --gray out/make invisible up/down if unavailable
     -- test states saving after moving
     term.redirect(floorWindow)
-    local floorOffset = 0
+    FloorOffset = 0
     local size = 3
     local buttonOffset = 0
     --sliding window for floors
@@ -262,9 +265,11 @@ function Display()
 
 end
 
--- touch event handler
-function HandleTouchEvent(event)
-
+function upHandler(x,y)
+    return ((x>1 and x<15)and y<4)
+end
+function downHandler(x,y)
+    return ((x>1 and x<15)and y>16)
 end
 
 Main()
