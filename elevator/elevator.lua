@@ -2,7 +2,7 @@
 
 
 function Main()
-    local version = 2.101
+    local version = 2.103
     print("version: "..version)
     Floors = {"S-1","S","1","2"}
     GroundFloor = 3
