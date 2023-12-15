@@ -2,7 +2,7 @@
 
 
 function Main()
-    local version = 2.103
+    local version = 2.104
     print("version: "..version)
     Floors = {"S-1","S","1","2"}
     GroundFloor = 3
@@ -23,12 +23,15 @@ function Main()
             for key,button in pairs(buttons) do
                 if button.clicked(event[3],event[4]) then -- column,row
                     --redstone.setOutput(key,button.toggle())     add elevator functions
+                    print("TouchMid")
                     button.draw(Monitor)
                     break -- we found on, so we don't need to keep looking
                 end
             end
             if upHandler(event[3],event[4]) then
+                print("TouchUp")
                 FloorOffset = FloorOffset+1
+                print("TouchDown")
             elseif downHandler(event[3],event[4]) then
                 FloorOffset = FloorOffset-1
             end
@@ -237,7 +240,7 @@ function Display()
     buttons = {}
     for i = GroundFloor+4*FloorOffset,GroundFloor+3 , 1 do
         if i>#Floors then break end
-        buttons[i] = Button(13,3,Floors[i],colors.lightBlue,colors.red,colors.yellow,colors.white,false,_,_,1,13-buttonOffset)
+        buttons[i] = Button(13,3,Floors[i],colors.lightBlue,colors.red,colors.yellow,colors.white,false,_,_,2,13-buttonOffset,false)
 
         --paintutils.drawFilledBox(1,1+buttonOffset,13,3+buttonOffset,colors.lightBlue)
         --add number in centre
@@ -266,10 +269,10 @@ function Display()
 end
 
 function upHandler(x,y)
-    return ((x>1 and x<15)and y<4)
+    return ((x>1 and x<15)and (y<6 and y>2))
 end
 function downHandler(x,y)
-    return ((x>1 and x<15)and y>16)
+    return ((x>1 and x<15)and (y>16 and y<20))
 end
 
 Main()
