@@ -2,7 +2,7 @@
 
 
 function Main()
-    local version = 2.1
+    local version = 2.3
     print("version: "..version)
     Floors = {"2","1","S","S-1"}
     GroundFloor = 2
@@ -233,14 +233,14 @@ function Display()
     --sliding window for floors
     buttons = {}
     for i = GroundFloor+4*floorOffset,GroundFloor+3 , 1 do
-        buttons[i] = Button(13,3,Floors[i],colors.lightBlue,colors.lightGray,colors.yellow,colors.black,false,_,_,2+buttonOffset,1)
+        buttons[i] = Button(13,3,Floors[i],colors.lightBlue,colors.lightGray,colors.yellow,colors.black,false,_,_,12,14-buttonOffset)
 
         --paintutils.drawFilledBox(1,1+buttonOffset,13,3+buttonOffset,colors.lightBlue)
         --add number in centre
         --local centreOffset = (13 - #value)/2
         --term.setCursorPos(centreOffset,2+buttonOffset)
         --term.write(Floors[1])
-        --buttonOffset = buttonOffset + size + 1
+        buttonOffset = buttonOffset + size + 1
     end
 
     for key,button in pairs(buttons) do
