@@ -2,7 +2,7 @@
 
 
 function Main()
-    local version = 2.5
+    local version = 2.6
     print("version: "..version)
     Floors = {"S-1","S","1","2"}
     GroundFloor = 2
@@ -27,11 +27,11 @@ function Main()
                     break -- we found on, so we don't need to keep looking
                 end
             end
-            if quit.clicked(event[3],event[4]) == true then
-                os.queueEvent("key",keys.q)
-                end
-            elseif event[1] =="key" and event[2]==keys.q then
-                break
+            -- if quit.clicked(event[3],event[4]) == true then
+            --     os.queueEvent("key",keys.q)
+            -- end
+        elseif event[1] =="key" and event[2]==keys.q then
+            break
         end
     end
     --while loop event handlers
