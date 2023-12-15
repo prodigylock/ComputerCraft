@@ -2,7 +2,7 @@
 
 
 function Main()
-    local version = 2.100
+    local version = 2.101
     print("version: "..version)
     Floors = {"S-1","S","1","2"}
     GroundFloor = 3
@@ -237,7 +237,7 @@ function Display()
     buttons = {}
     for i = GroundFloor+4*FloorOffset,GroundFloor+3 , 1 do
         if i>#Floors then break end
-        buttons[i] = Button(13,3,Floors[i],colors.lightBlue,colors.lightGray,colors.yellow,colors.black,false,_,_,1,13-buttonOffset)
+        buttons[i] = Button(13,3,Floors[i],colors.lightBlue,colors.red,colors.yellow,colors.white,false,_,_,1,13-buttonOffset)
 
         --paintutils.drawFilledBox(1,1+buttonOffset,13,3+buttonOffset,colors.lightBlue)
         --add number in centre
