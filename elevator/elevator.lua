@@ -2,7 +2,8 @@
 
 
 function Main()
-    print("version: 1")
+    local version = 2
+    print("version: "..version)
     Floors = {"2","1","S","S-1"}
     GroundFloor = 2
     Monitor = peripheral.wrap("top")
@@ -12,7 +13,7 @@ function Main()
     term.clear()
     
     Display()
-    term.reset()
+    term.redirect(term.native())
     while true do
 
         event ={os.pullEvent()}--gets event
