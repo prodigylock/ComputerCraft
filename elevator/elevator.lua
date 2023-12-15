@@ -2,10 +2,10 @@
 
 
 function Main()
-    local version = 2.6
+    local version = 2.7
     print("version: "..version)
     Floors = {"S-1","S","1","2"}
-    GroundFloor = 2
+    GroundFloor = 3
     Monitor = peripheral.wrap("top")
         
     term.redirect(Monitor)
