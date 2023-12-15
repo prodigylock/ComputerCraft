@@ -3,6 +3,7 @@ function Main()
     monitor1 = peripheral.wrap("top")
 
     buttons = {}
+    --buttons(sizex,sizey,lable,color
     buttons.left= Button(10,3,"Left",colors.lime,colors.red,colors.white,colors.yellow,true,colors.green,colors.pink,1,1,false,nil,nil)
     --buttons.right = Button(10,3,"Right",colors.lime,colors.red,colors.white,colors.yellow,true,colors.green,colors.pink,1,4,false,nil,nil)
     --buttons.bottom = Button(10,3,"Bottom",colors.lime,colors.red,colors.white,colors.yellow,true,colors.green,colors.pink,1,7,false,nil,nil)
@@ -83,83 +84,83 @@ local function Button(
 
     function button.draw(display,isPressed,startColumn,startRow)
 
-    button.startColumn = startColumn or button.startColumn
-    button.startRow = startRow or button.startRow
-    display = display or term
-    if isPressed == false or isPressed then
-        button.isPressed = isPressed
-    else 
-        isPressed = button.isPressed
-    end
-    local width = button.width
-    local height = button.height
-    startRow = button.startRow
-    startColumn = button.startColumn
+        button.startColumn = startColumn or button.startColumn
+        button.startRow = startRow or button.startRow
+        display = display or term
+        if isPressed == false or isPressed then
+            button.isPressed = isPressed
+        else 
+            isPressed = button.isPressed
+        end
+        local width = button.width
+        local height = button.height
+        startRow = button.startRow
+        startColumn = button.startColumn
 
-    local label = button.label
-    local labelPad = 2
+        local label = button.label
+        local labelPad = 2
 
-    -- set border params and draw border if hasBorder
-    if button.hasBorder == true then
-    -- button must be at least 3x3, if not, make it so
-    if width < 3 then
-    width = 3
-    end
-    if height < 3 then
-    height = 3
-    end
+        -- set border params and draw border if hasBorder
+        if button.hasBorder == true then
+        -- button must be at least 3x3, if not, make it so
+        if width < 3 then
+            width = 3
+        end
+        if height < 3 then
+            height = 3
+        end
 
-    -- set border colors
-    if not isPressed then
-    if not display.isColor() then
-    display.setBackgroundColor(colors.white)
-    else
-    display.setBackgroundColor(button.borderColorNormal)
-    end
-    else
-    if not display.isColor() then
-    display.setBackgroundColor(colors.white)
-    else
-    display.setBackgroundColor(button.borderColorPressed)
-    end
-    end
+        -- set border colors
+        if not isPressed then
+        if not display.isColor() then
+        display.setBackgroundColor(colors.white)
+        else
+        display.setBackgroundColor(button.borderColorNormal)
+        end
+        else
+        if not display.isColor() then
+        display.setBackgroundColor(colors.white)
+        else
+        display.setBackgroundColor(button.borderColorPressed)
+        end
+        end
 
-    -- draw button border (inset)
-    display.setCursorPos(startColumn,startRow)
-    display.write(string.rep(" ",width))
-    for row = 2,height-1 do
-    display.setCursorPos(startColumn,button.startRow+row -1)
-    display.write(" ")
-    display.setCursorPos(startColumn+width -1 ,startRow + row-1)
-    display.write(" ")
-    end
-    display.setCursorPos(startColumn,startRow+height-1)
-    display.write(string.rep(" ",width))
+        -- draw button border (inset)
+        display.setCursorPos(startColumn,startRow)
+        display.write(string.rep(" ",width))
+        for row = 2,height-1 do
+        display.setCursorPos(startColumn,button.startRow+row -1)
+        display.write(" ")
+        display.setCursorPos(startColumn+width -1 ,startRow + row-1)
+        display.write(" ")
+        end
+        display.setCursorPos(startColumn,startRow+height-1)
+        display.write(string.rep(" ",width))
 
-    -- reset startColumn,startRow,width,column to inset button and label
-    startColumn=startColumn+1
-    startRow = startRow +1
-    width = width - 2
-    height = height - 2
-    end
+        -- reset startColumn,startRow,width,column to inset button and label
+        startColumn=startColumn+1
+        startRow = startRow +1
+        width = width - 2
+        height = height - 2
+        end
 
-    --set button background and text colors
-    if not isPressed then
-    if not display.isColor() then
-    display.setBackgroundColor(colors.black)
-    display.setTextColor(colors.white)
-    else
-    display.setBackgroundColor(button.backgroundColorNormal)
-    display.setTextColor(button.textColorNormal)
-    end
-    else
-    if not display.isColor() then
-    display.setBackgroundColor(colors.white)
-    display.setTextColor(colors.black)
-    else
-    display.setBackgroundColor(button.backgroundColorPressed)
-    display.setTextColor(button.textColorPressed)
-    end
+        --set button background and text colors
+        if not isPressed then
+            if not display.isColor() then
+                display.setBackgroundColor(colors.black)
+                display.setTextColor(colors.white)
+            else
+                display.setBackgroundColor(button.backgroundColorNormal)
+                display.setTextColor(button.textColorNormal)
+            end
+        else
+        if not display.isColor() then
+            display.setBackgroundColor(colors.white)
+            display.setTextColor(colors.black)
+        else
+            display.setBackgroundColor(button.backgroundColorPressed)
+            display.setTextColor(button.textColorPressed)
+        end
     end
 
     -- draw button background (will be inside border if there is one)
