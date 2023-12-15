@@ -2,7 +2,7 @@
 
 
 function Main()
-    local version = 2.91
+    local version = 2.100
     print("version: "..version)
     Floors = {"S-1","S","1","2"}
     GroundFloor = 3
@@ -22,7 +22,7 @@ function Main()
         if event[1] =="monitor_touch" then
             for key,button in pairs(buttons) do
                 if button.clicked(event[3],event[4]) then -- column,row
-                    redstone.setOutput(key,button.toggle())
+                    --redstone.setOutput(key,button.toggle())     add elevator functions
                     button.draw(monitor1)
                     break -- we found on, so we don't need to keep looking
                 end
