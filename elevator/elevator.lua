@@ -2,7 +2,7 @@
 
 
 function Main()
-    local version = 2.3
+    local version = 2.4
     print("version: "..version)
     Floors = {"2","1","S","S-1"}
     GroundFloor = 2
@@ -233,7 +233,7 @@ function Display()
     --sliding window for floors
     buttons = {}
     for i = GroundFloor+4*floorOffset,GroundFloor+3 , 1 do
-        buttons[i] = Button(13,3,Floors[i],colors.lightBlue,colors.lightGray,colors.yellow,colors.black,false,_,_,12,14-buttonOffset)
+        buttons[i] = Button(13,3,Floors[i],colors.lightBlue,colors.lightGray,colors.yellow,colors.black,false,_,_,1,14-buttonOffset)
 
         --paintutils.drawFilledBox(1,1+buttonOffset,13,3+buttonOffset,colors.lightBlue)
         --add number in centre
