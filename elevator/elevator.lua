@@ -2,9 +2,9 @@
 
 
 function Main()
-    local version = 2.4
+    local version = 2.5
     print("version: "..version)
-    Floors = {"2","1","S","S-1"}
+    Floors = {"S-1","S","1","2"}
     GroundFloor = 2
     Monitor = peripheral.wrap("top")
         
