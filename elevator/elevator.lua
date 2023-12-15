@@ -10,9 +10,29 @@ function Main()
     term.redirect(Monitor)
     term.setBackgroundColour(colors.black)
     term.clear()
-
+    
     Display()
+    term.reset()
+    while true do
 
+        event ={os.pullEvent()}--gets event
+
+
+        if event[1] =="monitor_touch" then
+            for key,button in pairs(buttons) do
+                if button.clicked(event[3],event[4]) then -- column,row
+                    redstone.setOutput(key,button.toggle())
+                    button.draw(monitor1)
+                    break -- we found on, so we don't need to keep looking
+                end
+            end
+            if quit.clicked(event[3],event[4]) == true then
+                os.queueEvent("key",keys.q)
+                end
+            elseif event[1] =="key" and event[2]==keys.q then
+                break
+        end
+    end
     --while loop event handlers
 
 end
@@ -188,6 +208,7 @@ function Display()
     upWindow.clear()
     downWindow.clear()
 
+    --drawing top and bottom buttons
     term.redirect(upWindow)
     term.setCursorPos(6,1)
     term.write("/ \\")
@@ -209,14 +230,20 @@ function Display()
     local size = 3
     local buttonOffset = 0
     --sliding window for floors
+    buttons = {}
     for i = GroundFloor+4*floorOffset,GroundFloor+3 , 1 do
-        
-        paintutils.drawFilledBox(1,1+buttonOffset,13,3+buttonOffset,colors.lightBlue)
+        buttons[i] = Button(13,3,Floors[i],colors.lightBlue,colors.lightGray,colors.yellow,colors.black,false,_,_,2+buttonOffset,2)
+
+        --paintutils.drawFilledBox(1,1+buttonOffset,13,3+buttonOffset,colors.lightBlue)
         --add number in centre
-        local centreOffset = (13 - #value)/2
-        term.setCursorPos(centreOffset,2+buttonOffset)
-        term.write(Floors[1])
-        buttonOffset = buttonOffset + size + 1
+        --local centreOffset = (13 - #value)/2
+        --term.setCursorPos(centreOffset,2+buttonOffset)
+        --term.write(Floors[1])
+        --buttonOffset = buttonOffset + size + 1
+    end
+
+    for key,button in pairs(buttons) do
+        button.draw(monitor1)
     end
     
     -- for index, value in ipairs(Floors) do
