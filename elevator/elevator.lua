@@ -2,7 +2,7 @@
 
 
 function Main()
-
+    print("version: 1")
     Floors = {"2","1","S","S-1"}
     GroundFloor = 2
     Monitor = peripheral.wrap("top")
