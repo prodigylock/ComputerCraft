@@ -13,7 +13,7 @@ function Main()
     term.clear()
     
     Display()
-    term.redirect(term.native())
+    --term.redirect(term.native())
     while true do
 
         event ={os.pullEvent()}--gets event
@@ -23,7 +23,7 @@ function Main()
             for key,button in pairs(buttons) do
                 if button.clicked(event[3],event[4]) then -- column,row
                     --redstone.setOutput(key,button.toggle())     add elevator functions
-                    button.draw(monitor1)
+                    button.draw(Monitor)
                     break -- we found on, so we don't need to keep looking
                 end
             end
@@ -248,7 +248,7 @@ function Display()
     end
 
     for key,button in pairs(buttons) do
-        button.draw(monitor1)
+        button.draw(Monitor)
     end
     
     -- for index, value in ipairs(Floors) do
