@@ -92,6 +92,6 @@ function downloadFilesAPI(username, repository, branch, filePath)
           print("Failed to access GitHub API.")
       end
   end
-  getAllFiles("prodigylock", "ComputerCraft", "main")
+  getAllFiles("prodigylock", "ComputerCraft", "master")
  
         
