@@ -27,7 +27,6 @@ function Main()
                     break -- we found on, so we don't need to keep looking
                 end
             end
-            print(event[3].." "..event[4])
             if upHandler(event[3],event[4]) then
                 FloorOffset = FloorOffset+1
             elseif downHandler(event[3],event[4]) then
@@ -238,7 +237,7 @@ function Display()
     buttons = {}
     for i = GroundFloor+4*FloorOffset,GroundFloor+3 , 1 do
         if i>#Floors then break end
-        buttons[i] = Button(13,3,Floors[i],colors.lightBlue,colors.red,colors.yellow,colors.white,false,colors.lightBlue,colors.red,2,13-buttonOffset,false)
+        buttons[i] = Button(13,3,Floors[i],colors.lightBlue,colors.red,colors.yellow,colors.white,false,colors.lightBlue,colors.red,2,18-buttonOffset,false)
 
         --paintutils.drawFilledBox(1,1+buttonOffset,13,3+buttonOffset,colors.lightBlue)
         --add number in centre
